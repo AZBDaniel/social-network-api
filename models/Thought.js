@@ -8,18 +8,17 @@ const thoughtSchema = new Schema({
         maxlength: 280
     },
     createdAt: {
-        type: String,
-        required: true,
-        unique: true,
-        match: [/.+@.+\..+/, 'Please enter a valid e-mail address']
+        type: Date,
+        default: Date.now,
+        get: createdAtVal => dateFormat(createdAtVal)
     },
-    thoughts: [{
+    username: {
+        type: String,
+        required: true
+    },
+    reactions: [{
         type: Schema.Types.ObjectId,
-        ref: 'Thought'
-    }],
-    friends: [{
-        type: Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'Reaction'
     }]
 },
     {
@@ -30,10 +29,10 @@ const thoughtSchema = new Schema({
     }
 )
 
-userSchema.virtual('freindCount').get(function() {
-    return this.friends.length
+userSchema.virtual('reactionCount').get(function() {
+    return this.reactions.length
   });
 
-  const User = model('User', userSchema)
+  const Thought = model('Thought', thoughtSchema)
 
-  module.exports = User
+  module.exports = Thought
