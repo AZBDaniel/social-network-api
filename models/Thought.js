@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose')
+const reactionSchema = require('./Reaction')
 
 const thoughtSchema = new Schema({
     thoughtText: {
@@ -16,7 +17,7 @@ const thoughtSchema = new Schema({
         type: String,
         required: true
     },
-    reactions: [ReactionSchema]
+    reactions: [reactionSchema]
 },
     {
         toJSON: {
@@ -26,10 +27,10 @@ const thoughtSchema = new Schema({
     }
 )
 
-userSchema.virtual('reactionCount').get(function() {
+userSchema.virtual('reactionCount').get(function () {
     return this.reactions.length
-  });
+});
 
-  const Thought = model('Thought', thoughtSchema)
+const Thought = model('Thought', thoughtSchema)
 
-  module.exports = Thought
+module.exports = Thought

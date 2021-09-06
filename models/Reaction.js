@@ -2,30 +2,32 @@ const { Schema, model } = require('mongoose');
 
 const reactionSchema = new Schema(
     {
-      // set custom id to avoid confusion with parent comment _id
-      reactionId: {
-        type: Schema.Types.ObjectId,
-        default: () => new Types.ObjectId()
-      },
-      reactionBody: {
-        type: String,
-        required: true,
-        maxlength: 280
-      },
-      username: {
-        type: String,
-        required: true
-      },
-      createdAt: {
-        type: Date,
-        default: Date.now,
-        get: createdAtVal => dateFormat(createdAtVal)
-      }
+        // set custom id to avoid confusion with parent comment _id
+        reactionId: {
+            type: Schema.Types.ObjectId,
+            default: () => new Types.ObjectId()
+        },
+        reactionBody: {
+            type: String,
+            required: true,
+            maxlength: 280
+        },
+        username: {
+            type: String,
+            required: true
+        },
+        createdAt: {
+            type: Date,
+            default: Date.now,
+            get: createdAtVal => dateFormat(createdAtVal)
+        }
     },
     {
-      toJSON: {
-        virtuals: true,
-        getters: true
-      }
+        toJSON: {
+            virtuals: true,
+            getters: true
+        }
     }
-  );
+);
+
+module.exports = reactionSchema
