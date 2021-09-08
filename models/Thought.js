@@ -11,7 +11,7 @@ const thoughtSchema = new Schema({
     createdAt: {
         type: Date,
         default: Date.now,
-        get: createdAtVal => dateFormat(createdAtVal)
+        //get: createdAtVal => dateFormat(createdAtVal)
     },
     username: {
         type: String,
@@ -27,7 +27,7 @@ const thoughtSchema = new Schema({
     }
 )
 
-userSchema.virtual('reactionCount').get(function () {
+thoughtSchema.virtual('reactionCount').get(function () {
     return this.reactions.length
 });
 

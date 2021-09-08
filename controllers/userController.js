@@ -2,7 +2,7 @@ const {User} = require('../models')
 
 module.exports = {
     getUsers(req, res) {
-        User.findAll()
+        User.find()
         .then ((responses)=> {
             res.json(responses)
         })
@@ -15,7 +15,7 @@ module.exports = {
     },
     getUserById(req, res) {
         User.findById(req.params.id)
-        .populate('thought').populate('friend')
+        .populate('thoughts').populate('friends')
         .then ((responses) => {
             res.json(responses)
         })
