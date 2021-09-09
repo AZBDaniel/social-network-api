@@ -35,7 +35,7 @@ Downloading the zip file from my github or forking the repo will allow you to us
 
 
 ## Walkthrough or Screenshot
-[Walkthrough](public/images/homePage.PNG)
+[Walkthrough](https://youtu.be/7Rl-aGcox10)
 
 
 ## Langauges
